@@ -46,7 +46,7 @@ export default function PostFilter() {
         </Button>
       </Box>
       <Menu
-        onClose={(e) => handleClose(e)}
+        onClose={() => handleClose()}
         open={Boolean(state.open)}
         className={
           '  justify-around items-center min-w-full  border-2 border-primary-main rounded-xl mb-4'
