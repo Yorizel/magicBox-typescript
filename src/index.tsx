@@ -1,17 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import App from 'src/App';
+import { MuiThemeProvider } from '@material-ui/core';
+import AuthProvider from 'src/context/authContext';
+import SnackProvider from 'src/context/snackContext';
+import theme from 'src/plugins/materialUI';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <MuiThemeProvider theme={theme}>
+      <AuthProvider>
+        <SnackProvider>
+          <App />
+        </SnackProvider>
+      </AuthProvider>
+    </MuiThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
