@@ -9,7 +9,7 @@ import {
   Typography
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Params } from '../index';
+import { Params } from '../BodyContentController';
 import { useHistory } from 'react-router-dom';
 
 function PostCard({ data }: Params) {
@@ -57,7 +57,7 @@ function PostCard({ data }: Params) {
             <Typography
               onClick={() => history.push('/post', { data })}
               className={
-                'text-lg text-primary cursor-pointer font-bold hover:scale-105'
+                'text-lg text-primary cursor-pointer transform font-bold transition duration-200 ease-in-out hover:scale-105'
               }
             >
               Leia mais

@@ -7,7 +7,7 @@ import {
   CardMedia,
   Typography
 } from '@material-ui/core';
-import { Params } from '../index';
+import { Params } from '../BodyContentController';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { AuthContext } from 'src/context/authContext';
@@ -11,7 +11,7 @@ export const useRoutesController = () => {
   const location = useLocation();
   const { auth } = useContext(AuthContext);
 
-  const routes = () => {
+  const routes = useCallback(() => {
     if (auth.isLogged) {
       switch (auth.user.role) {
         case 'WRITER': {
@@ -26,6 +26,7 @@ export const useRoutesController = () => {
       }
     }
     return <UnAuthRoutes />;
-  };
+  }, [auth.isLogged]);
+
   return { location, routes };
 };

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { AuthContext } from '../../../../../../context/authContext';
 import { useNavbarContentController } from '../../desktop/useNavbarContentController';
 import { WriterData } from './data/writerData';
@@ -9,7 +9,7 @@ import { UnAuthData } from './data/unAuthData';
 export const useMobileDrawerStructure = () => {
   const { auth } = useContext(AuthContext);
   const { logoutHandler, handleClick, Data } = useNavbarContentController();
-  const listOptions = () => {
+  const listOptions = useCallback(() => {
     if (auth.isLogged) {
       switch (auth.user.role) {
         case 'WRITER':
@@ -32,9 +32,8 @@ export const useMobileDrawerStructure = () => {
           );
       }
     }
-    return (
-      <UnAuthData handleClick={handleClick} logoutHandler={logoutHandler} />
-    );
-  };
+    return <UnAuthData />;
+  }, [auth.isLogged]);
+
   return { listOptions, Data };
 };
